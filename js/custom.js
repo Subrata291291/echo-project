@@ -60,22 +60,24 @@
     });
   });
 
-
+//Window scroll header
   let lastScrollTop = 0;
-  const header = document.getElementById("custom-header");
-  
-  window.addEventListener("scroll", function() {
-      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-  
-      if (currentScroll > lastScrollTop) {
-          // Downscroll
-          header.style.top = "-150px"; // Hide header on downscroll
-      } else {
-          // Upscroll
-          header.style.top = "0"; // Show header on upscroll
-      }
-      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
-  }, false);
+const header = document.getElementById("custom-header");
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.scrollY || document.documentElement.scrollTop;
+
+  if (currentScroll > lastScrollTop && currentScroll > 100) {
+    // Scroll Down and scrolled more than 100px
+    header.style.top = "-150px";
+  } else {
+    // Scroll Up
+    header.style.top = "0";
+  }
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
+
   
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -374,3 +376,103 @@
     setTimeout(() => { popup.style.display = 'none'; }, 3000);
   }
   
+
+  //Header catregory display
+  fetch('category-list.json')
+  .then(response => response.json())
+  .then(data => {
+    const select = document.getElementById('category-select');
+    if (!select || !data.categories) return;
+
+    data.categories.forEach((category, index) => {
+      const option = document.createElement('option');
+      option.value = category.name; // You can use `index` if you need unique ID
+      option.textContent = category.name;
+      select.appendChild(option);
+    });
+  })
+  .catch(error => {
+    console.error('Error loading category list:', error);
+  });
+
+
+  //Dynamic dropdwon for mega menu
+  fetch('categories-dropdown.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to fetch JSON');
+      }
+      return response.json();
+    })
+    .then(data => {
+      const dropdown = document.getElementById('dynamic-dropdown');
+      const groups = data.categoryGroups;
+
+      groups.forEach(group => {
+        const outerLi = document.createElement('li');
+        const innerUl = document.createElement('ul');
+
+        if (group.items) {
+          group.items.forEach(item => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.className = 'dropdown-item';
+            a.href = '#';
+            a.textContent = item;
+            li.appendChild(a);
+            innerUl.appendChild(li);
+          });
+        } else if (group.image) {
+          const li = document.createElement('li');
+          const img = document.createElement('img');
+          img.src = group.image;
+          img.alt = '';
+          li.appendChild(img);
+          innerUl.appendChild(li);
+        }
+
+        outerLi.appendChild(innerUl);
+        dropdown.appendChild(outerLi);
+      });
+    })
+    .catch(error => {
+      console.error('Error loading dropdown data:', error);
+    });
+
+//Mobile Dropdown menu
+  fetch('categories-dropdown.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to load categories JSON');
+      }
+      return response.json();
+    })
+    .then(data => {
+      const menu = document.getElementById('mobile-dropdown');
+      const categoryGroups = data.categoryGroups;
+
+      categoryGroups.forEach((group, groupIndex) => {
+        if (group.items) {
+          group.items.forEach((item, itemIndex) => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.className = 'dropdown-item';
+            a.href = '#';
+            a.textContent = item;
+            li.appendChild(a);
+            menu.appendChild(li);
+
+            // Optional: Add divider after each item except last
+            if (itemIndex < group.items.length - 1) {
+              const divider = document.createElement('li');
+              divider.innerHTML = '<hr class="dropdown-divider">';
+              menu.appendChild(divider);
+            }
+          });
+        }
+      });
+    })
+    .catch(error => {
+      console.error('Error loading categories:', error);
+    });
+

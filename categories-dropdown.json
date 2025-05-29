@@ -1,0 +1,16 @@
+{
+  "categoryGroups": [
+    {
+      "items": ["Electronics", "Fashion", "Home Appliances", "Gadgets", "Cameras"]
+    },
+    {
+      "items": ["Electronics", "Fashion", "Home Appliances", "Gadgets", "Cameras"]
+    },
+    {
+      "items": ["Electronics", "Fashion", "Home Appliances", "Gadgets", "Cameras"]
+    },
+    {
+      "image": "images/product-pic.webp"
+    }
+  ]
+}
