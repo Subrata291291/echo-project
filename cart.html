@@ -35,15 +35,15 @@
               <div class="topbar-left">
                 <ul class="d-flex justify-content-center justify-content-md-start">
                   <li>
-                    <a href="#">Wishlist</a>
+                    <a href="wishlist.html">Wishlist</a>
                   </li>
                   <li class="divider">|</li>
                   <li>
-                    <a href="#">Checkout</a>
+                    <a href="checkout.html">Checkout</a>
                   </li>
                   <li class="divider">|</li>
                   <li>
-                    <a href="#">My Orders</a>
+                    <a href="thank-you.html">My Orders</a>
                   </li>
                 </ul>
               </div>
@@ -80,14 +80,14 @@
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         </li>
                         <li class="categrory-area d-md-none d-lg-block">
-                            <select class="form-select" aria-label="Default select example">
+                            <select class="form-select" id="category-select" aria-label="Default select example">
                                 <option selected>All Categories</option>
-                                <option value="1">Vegetables</option>
+                                <!-- <option value="1">Vegetables</option>
                                 <option value="2">Fruits</option>
                                 <option value="3">Meat</option>
                                 <option value="4">Bread</option>
                                 <option value="5">Sea Food</option>
-                                <option value="6">Drinks</option>
+                                <option value="6">Drinks</option> -->
                               </select>
                         </li>
                         <li>
@@ -104,7 +104,7 @@
                             <a href="#"><i class="fa-regular fa-heart"></i></a>
                         </li>
                         <li class="cart-bag position-relative">
-                            <a href=""><i class="fa-solid fa-bag-shopping"></i></a>
+                            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
                             <span class="position-absolute" id="cart-count">0</span>
                         </li>
                         <li class="d-md-none">
@@ -125,18 +125,18 @@
                                                 <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                                               </li>
                                               <li class="nav-item">
-                                                <a class="nav-link" href="index.html">About</a>
+                                                <a class="nav-link" href="products.html">Products</a>
                                               </li>
                                               <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="index.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                   Shop
                                                 </a>
-                                                <ul class="dropdown-menu">
-                                                  <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <ul class="dropdown-menu" id="mobile-dropdown">
+                                                  <!-- <li><a class="dropdown-item" href="#">Action</a></li>
                                                   <li><hr class="dropdown-divider"></li>
                                                   <li><a class="dropdown-item" href="#">Another action</a></li>
                                                   <li><hr class="dropdown-divider"></li>
-                                                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                  <li><a class="dropdown-item" href="#">Something else here</a></li> -->
                                                 </ul>
                                               </li>
                                               <li class="nav-item">
@@ -163,14 +163,14 @@
                                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                             </li>
                             <li class="categrory-area d-md-none d-lg-block">
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" id="category-select-mb" aria-label="Default select example">
                                     <option selected>All Categories</option>
-                                    <option value="1">Vegetables</option>
+                                    <!-- <option value="1">Vegetables</option>
                                     <option value="2">Fruits</option>
                                     <option value="3">Meat</option>
                                     <option value="4">Bread</option>
                                     <option value="5">Sea Food</option>
-                                    <option value="6">Drinks</option>
+                                    <option value="6">Drinks</option> -->
                                   </select>
                             </li>
                             <li>
@@ -193,14 +193,14 @@
                           <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="index.html">About</a>
+                          <a class="nav-link" href="products.html">Products</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link mega-menu position-relative dropdown-toggle" href="index.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Shop
                               </a>
-                              <ul class="dropdown-menu p-md-0 p-lg-2 d-lg-flex align-items-center justify-content-between">
-                                <li>
+                              <ul class="dropdown-menu p-md-0 p-lg-2 d-lg-flex align-items-center justify-content-between" id="dynamic-dropdown">
+                                <!-- <li>
                                   <ul>
                                       <li>
                                           <a class="dropdown-item" href="#">Shirts</a>
@@ -263,7 +263,7 @@
                                           <img src="images/product-pic.webp" alt="">
                                       </li>
                                   </ul>
-                                </li>
+                                </li> -->
                               </ul>
                         </li>
                         <li class="nav-item">
@@ -377,10 +377,10 @@
               <h3>My Account</h3>
               <ul class="nav-links">
                 <li>
-                  <a href="#">Track Order</a>
+                  <a href="thank-you.html">Track Order</a>
                 </li>
                 <li>
-                  <a href="#">Cart</a>
+                  <a href="cart.html">Cart</a>
                 </li>
                 <li>
                   <a href="#">Sign In</a>
@@ -399,7 +399,7 @@
                   <a href="index.html">Home</a>
                 </li>
                 <li>
-                  <a href="index.html">Shop</a>
+                  <a href="products.html">Products</a>
                 </li>
                 <li>
                   <a href="cart.html">Cart</a>
