@@ -494,6 +494,9 @@ header .menu-area .dropdown .mega-menu::after {
   display: none;
   margin-top: 6rem;
 }
+.product-tab-area .tab-content .product-box {
+  margin-bottom: 2rem;
+}
 .product-tab-area .current {
   display: inherit;
 }

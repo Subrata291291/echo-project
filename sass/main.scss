@@ -436,6 +436,9 @@ header {
       .tab-content {
         display: none;
         margin-top: 6rem;
+        .product-box {
+            margin-bottom: 2rem;
+        }
       }
       .current {
         display: inherit;
