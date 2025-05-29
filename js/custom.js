@@ -196,11 +196,11 @@ window.addEventListener("scroll", () => {
           const slide = `
             <div class="slider position-relative product-box shadow text-center">
               <div class="product-pic">
-                <a href="#"><img src="${category.image}" alt="${category.name}"></a>
+                <a href="products.html"><img src="${category.image}" alt="${category.name}"></a>
               </div>
               <div class="category-content">
                 <h4 class="category-name">${category.name}</h4>
-                <a href="#" class="shop-btn">Shop Now</a>
+                <a href="products.html" class="shop-btn">Shop Now</a>
               </div>
             </div>
           `;
