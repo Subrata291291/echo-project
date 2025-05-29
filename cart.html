@@ -306,38 +306,7 @@
                 </ul>
               </div>
                 <div class="product-details-box" id="product-details-box">
-                  <!-- <div class="row">
-                    <div class="col-md-6">
-                      <div class="product-price-details">
-                        <div class="row">
-                          <div class="col-4">
-                            <div class="product-pic">
-                              <img src="images/1.jpg" alt="">
-                            </div>
-                          </div>
-                          <div class="col-8">
-                            <div class="product-price-details">
-                              <h4 class="product-title">Multi-colorful Music</h4>
-                              <h5 class="product-price mt-3">$297.00</h5>
-                            </div>
-                            <div class="quantity-wrapper mt-4">
-                              <div class="quantity-selector">
-                                <button class="qty-btn minus">−</button>
-                                <span class="qty-value">1</span>
-                                <button class="qty-btn plus">+</button>
-                              </div>
-                              <a href="#" class="remove-item text-danger mt-4 d-block" style="font-size: 1.2rem;">Remove item</a>
-                            </div>                         
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="product-details-cart-total d-none d-md-block">
-                        <h5 class="product-price mt-3">$297.00</h5>
-                      </div>
-                    </div>
-                  </div> -->
+                  <!--Content are coming from javascript-->
                 </div>
             </div>
           </div>
@@ -475,112 +444,6 @@
     </section>
     <!--Footer area-->
 
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-      let productList = JSON.parse(localStorage.getItem('product_list')) || {};
-      const productBox = document.getElementById("product-details-box");
-
-      let subtotal = 0;
-      let html = '';
-
-      // Build cart items
-      for (let key in productList) {
-        if (!productList[key] || !productList[key][0]) continue;
-
-        const product = productList[key][0];
-        const rowTotal = (product.quantity * product.price).toFixed(2);
-        subtotal += parseFloat(rowTotal);
-
-        html += `
-          <div class="row mb-5 product-item" data-id="${key}">
-            <div class="col-md-6">
-              <div class="product-price-details">
-                <div class="row">
-                  <div class="col-4">
-                    <div class="product-pic"><img src="${product.url}" alt="${product.name}" style="width: 100%;"></div>
-                  </div>
-                  <div class="col-8">
-                    <div class="product-price-details">
-                      <h4 class="product-title">${product.name}</h4>
-                      <h5 class="product-price mt-3">$${product.price}</h5>
-                    </div>
-                    <div class="quantity-wrapper mt-4">
-                      <div class="quantity-selector">
-                        <button class="qty-btn minus">−</button>
-                        <span class="qty-value">${product.quantity}</span>
-                        <button class="qty-btn plus">+</button>
-                      </div>
-                      <a href="#" class="remove-item text-danger mt-4 d-block" style="font-size: 1.2rem;">Remove item</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="product-details-cart-total d-none d-md-block">
-                <h5 class="product-price mt-3">$<span class="row-total">${rowTotal}</span></h5>
-              </div>
-            </div>
-          </div>
-        `;
-      }
-
-      productBox.innerHTML = html;
-      document.querySelector('.subtotal-price').textContent = '$' + subtotal.toFixed(2);
-      document.querySelector('.total-price').textContent = '$' + subtotal.toFixed(2);
-
-      // Attach button events
-      document.querySelectorAll('.product-item').forEach(item => {
-        const id = item.getAttribute('data-id');
-        const product = productList[id][0];
-
-        const qtyValue = item.querySelector('.qty-value');
-        const rowTotal = item.querySelector('.row-total');
-        const plusBtn = item.querySelector('.plus');
-        const minusBtn = item.querySelector('.minus');
-
-        const updateDisplay = () => {
-          qtyValue.textContent = product.quantity;
-          rowTotal.textContent = (product.quantity * product.price).toFixed(2);
-          updateSubtotal();
-          localStorage.setItem('product_list', JSON.stringify(productList));
-        };
-
-        plusBtn.addEventListener('click', () => {
-          product.quantity++;
-          updateDisplay();
-        });
-
-        minusBtn.addEventListener('click', () => {
-          if (product.quantity > 1) {
-            product.quantity--;
-            updateDisplay();
-          }
-        });
-
-        item.querySelector('.remove-item').addEventListener('click', e => {
-          e.preventDefault();
-          delete productList[id];
-          localStorage.setItem('product_list', JSON.stringify(productList));
-          item.remove();
-          updateSubtotal();
-        });
-      });
-
-      function updateSubtotal() {
-        let newSubtotal = 0;
-        for (let key in productList) {
-          if (!productList[key] || !productList[key][0]) continue;
-          const p = productList[key][0];
-          newSubtotal += p.quantity * p.price;
-        }
-        document.querySelector('.subtotal-price').textContent = '$' + newSubtotal.toFixed(2);
-        document.querySelector('.total-price').textContent = '$' + newSubtotal.toFixed(2);
-      }
-    });
-    </script>
-
   
 
 
@@ -633,6 +496,104 @@
     <!---fancybox---->
     <script src="js/fancybox.min.js"></script>
     <!---fancybox---->
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const cartContainer = document.getElementById('product-details-box');
+        const subtotalEl = document.querySelector('.subtotal-price');
+        const totalEl = document.querySelector('.total-price');
+      
+        let cart = JSON.parse(localStorage.getItem('product_list')) || {};
+      
+        function renderCart() {
+          cartContainer.innerHTML = ''; // Clear existing content
+          let subtotal = 0;
+      
+          Object.values(cart).forEach(([product]) => {
+            const totalPrice = product.price * product.quantity;
+            subtotal += totalPrice;
+      
+            const itemHTML = `
+              <div class="row cart-item" data-id="${product.id}">
+                <div class="col-md-6">
+                  <div class="product-price-details">
+                    <div class="row">
+                      <div class="col-4">
+                        <div class="product-pic">
+                          <img src="${product.image}" alt="${product.name}">
+                        </div>
+                      </div>
+                      <div class="col-8">
+                        <div class="product-price-details">
+                          <h4 class="product-title">${product.name}</h4>
+                          <h5 class="product-price mt-3">$${product.price.toFixed(2)}</h5>
+                        </div>
+                        <div class="quantity-wrapper mt-4">
+                          <div class="quantity-selector">
+                            <button class="qty-btn minus">−</button>
+                            <span class="qty-value">${product.quantity}</span>
+                            <button class="qty-btn plus">+</button>
+                          </div>
+                          <a href="#" class="remove-item text-danger mt-4 d-block" style="font-size: 1.2rem;">Remove item</a>
+                        </div>                         
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 d-none d-md-block">
+                  <div class="product-details-cart-total">
+                    <h5 class="product-price mt-3">$${totalPrice.toFixed(2)}</h5>
+                  </div>
+                </div>
+              </div>
+            `;
+      
+            cartContainer.insertAdjacentHTML('beforeend', itemHTML);
+          });
+      
+          subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+          totalEl.textContent = `$${subtotal.toFixed(2)}`;
+      
+          bindCartEvents(); // Re-bind events after rendering
+        }
+      
+        function bindCartEvents() {
+          document.querySelectorAll('.qty-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+              const item = btn.closest('.cart-item');
+              const id = item.getAttribute('data-id');
+              let quantitySpan = item.querySelector('.qty-value');
+              let quantity = parseInt(quantitySpan.textContent);
+      
+              if (btn.classList.contains('plus')) {
+                quantity++;
+              } else if (btn.classList.contains('minus') && quantity > 1) {
+                quantity--;
+              }
+      
+              cart[id][0].quantity = quantity;
+              localStorage.setItem('product_list', JSON.stringify(cart));
+              renderCart();
+            });
+          });
+      
+          document.querySelectorAll('.remove-item').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+              e.preventDefault();
+              const item = btn.closest('.cart-item');
+              const id = item.getAttribute('data-id');
+              delete cart[id];
+              localStorage.setItem('product_list', JSON.stringify(cart));
+              renderCart();
+            });
+          });
+        }
+      
+        // Initial render
+        renderCart();
+      });
+    </script>
+      
 
 
 

@@ -1,0 +1,29 @@
+{
+    "categories": [
+      {
+        "name": "Electronics",
+        "image": "images/2-1.jpg"
+      },
+      {
+        "name": "Fashion",
+        "image": "images/2-2.jpg"
+      },
+      {
+        "name": "Home Appliances",
+        "image": "images/2-3.jpg"
+      },
+      {
+        "name": "Gadgets",
+        "image": "images/2-4.jpg"
+      },
+      {
+        "name": "Cameras",
+        "image": "images/2-5.jpg"
+      },
+      {
+        "name": "Headphones",
+        "image": "images/2-4.jpg"
+      }
+    ]
+  }
+  

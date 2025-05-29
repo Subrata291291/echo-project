@@ -460,6 +460,9 @@ header .menu-area .dropdown .mega-menu::after {
 /* Product Tab Area*/
 .product-tab-area {
   padding: 6rem 0rem;
+  .product-box {
+    margin-bottom: 3em;
+  }
 }
 .product-tab-area .tabs {
   padding: 0px;
@@ -845,7 +848,11 @@ header .menu-area .dropdown .mega-menu::after {
 }
 
 /*Footer Area*/
+
 /*Aditional CSS*/
+.product-pic img {
+  max-height: 24.3rem;
+}
 .common-banner {
   padding: 7rem 0rem;
   background: url(../images/slider2.webp);
@@ -888,12 +895,16 @@ header .menu-area .dropdown .mega-menu::after {
   text-align: center;
 }
 
-#cart-popup {
+.cart-item {
+  margin: 0rem 0rem 2rem;
+}
+
+#popup-message {
   position: fixed;
   top: 20px;
   right: 20px;
-  background: #333;
-  color: #fff;
+  background: #fff;
+  color: #000;
   padding: 12px 20px;
   border-radius: 6px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -1022,6 +1033,7 @@ header .menu-area .dropdown .mega-menu::after {
 }
 .cart-area .product-details-left h4 {
   font-size: 1.6rem;
+  font-weight: 600;
 }
 .cart-area .product-details-left .product-heading {
   padding-bottom: 1rem;
@@ -1037,13 +1049,14 @@ header .menu-area .dropdown .mega-menu::after {
   text-align: right;
 }
 .cart-area .product-details-left .product-details-box .product-details-cart-total .product-price {
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1.6rem;
 }
 .cart-area .product-cart-total .cart-total {
   border-bottom: 1px solid #ddd;
   padding-bottom: 1rem;
   margin-bottom: 2rem;
+  font-weight: 600;
 }
 .cart-area .product-cart-total ul li {
   margin-bottom: 2rem;
@@ -1053,6 +1066,7 @@ header .menu-area .dropdown .mega-menu::after {
 }
 .cart-area .product-cart-total ul li h6 {
   font-size: 1.4rem;
+  font-weight: 600;
 }
 .cart-area .product-cart-total ul:last-child {
   border-top: 1px solid #ddd;
