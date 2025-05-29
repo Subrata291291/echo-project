@@ -395,6 +395,23 @@ window.addEventListener("scroll", () => {
     console.error('Error loading category list:', error);
   });
 
+  //Header catregory display for mobile
+  fetch('category-list.json')
+  .then(response => response.json())
+  .then(data => {
+    const select = document.getElementById('category-select-mb');
+    if (!select || !data.categories) return;
+
+    data.categories.forEach((category, index) => {
+      const option = document.createElement('option');
+      option.value = category.name; // You can use `index` if you need unique ID
+      option.textContent = category.name;
+      select.appendChild(option);
+    });
+  })
+  .catch(error => {
+    console.error('Error loading category list:', error);
+  });
 
   //Dynamic dropdwon for mega menu
   fetch('categories-dropdown.json')
