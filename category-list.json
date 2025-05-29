@@ -2,27 +2,27 @@
     "categories": [
       {
         "name": "Electronics",
-        "image": "images/2-1.jpg"
+        "image": "images/2-1.png"
       },
       {
         "name": "Fashion",
-        "image": "images/2-2.jpg"
+        "image": "images/2-3.png"
       },
       {
         "name": "Home Appliances",
-        "image": "images/2-3.jpg"
+        "image": "images/2-2.png"
       },
       {
         "name": "Gadgets",
-        "image": "images/2-4.jpg"
+        "image": "images/2-4.png"
       },
       {
         "name": "Cameras",
-        "image": "images/2-5.jpg"
+        "image": "images/2-5.png"
       },
       {
         "name": "Headphones",
-        "image": "images/2-4.jpg"
+        "image": "images/2-6.png"
       }
     ]
   }

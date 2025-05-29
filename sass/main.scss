@@ -41,6 +41,12 @@ a {
         font-weight: 600;
     }
 }
+.p-70 {
+    padding: 7rem 0rem;
+}
+.m-70 {
+    margin: 7rem 0rem;
+}
 /* Header Area*/
 header {
     background-color: $bg-primary-color;
@@ -762,6 +768,32 @@ header {
 /*Footer Area*/
 
 /*Aditional CSS*/
+.products-area {
+    .product-sorting {
+        padding: 1rem 3rem 1rem 1rem;
+        outline: none;
+    }
+    .products-left {
+        ul {
+            margin-top: 2rem;
+            li {
+                border-bottom: 1px solid #ddd;
+                padding: 1rem 0rem 0.5rem;
+                a {
+                    font-size: 1.6rem;
+                }
+            }
+        }
+    }
+    .products-right {
+        .product-box {
+            margin-bottom: 2rem;
+            border: 1px solid #ddd;
+            padding-bottom: 1rem;
+        }
+    }
+}
+
 .common-banner {
     padding: 7rem 0rem;
     background: url(../images/slider2.webp);
@@ -1102,6 +1134,9 @@ header {
 }
 
 @media screen and (max-width: 991px) {
+    .m-70 {
+        margin: 3rem 0rem;
+    }
     .banner_area {
         h4 {
             font-size: 3rem;
@@ -1211,6 +1246,23 @@ header {
 }
 
 @media screen and (max-width: 767px) {
+    .thank-you-area {
+        padding: 4rem 0rem;
+        .order-message {
+            ul {
+                li {
+                    margin-right: 1rem;
+                    padding-right: 1rem;
+                }
+            }
+        }
+    }
+    .common-banner {
+        padding: 4rem 0rem;
+        h3 {
+            font-size: 2.5rem;
+        }
+    }
     #custom-header {
         position: fixed;
         top: -50px;

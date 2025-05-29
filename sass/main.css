@@ -56,6 +56,14 @@ a {
   font-weight: 600;
 }
 
+.p-70 {
+  padding: 7rem 0rem;
+}
+
+.m-70 {
+  margin: 7rem 0rem;
+}
+
 /* Header Area*/
 header {
   background-color: #252525;
@@ -460,9 +468,6 @@ header .menu-area .dropdown .mega-menu::after {
 /* Product Tab Area*/
 .product-tab-area {
   padding: 6rem 0rem;
-  .product-box {
-    margin-bottom: 3em;
-  }
 }
 .product-tab-area .tabs {
   padding: 0px;
@@ -848,11 +853,27 @@ header .menu-area .dropdown .mega-menu::after {
 }
 
 /*Footer Area*/
-
 /*Aditional CSS*/
-.product-pic img {
-  max-height: 24.3rem;
+.products-area .product-sorting {
+  padding: 1rem 3rem 1rem 1rem;
+  outline: none;
 }
+.products-area .products-left ul {
+  margin-top: 2rem;
+}
+.products-area .products-left ul li {
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 0rem 0.5rem;
+}
+.products-area .products-left ul li a {
+  font-size: 1.6rem;
+}
+.products-area .products-right .product-box {
+  margin-bottom: 2rem;
+  border: 1px solid #ddd;
+  padding-bottom: 1rem;
+}
+
 .common-banner {
   padding: 7rem 0rem;
   background: url(../images/slider2.webp);
@@ -1138,6 +1159,9 @@ header .menu-area .dropdown .mega-menu::after {
 
 /*Responsive CSS*/
 @media screen and (max-width: 991px) {
+  .m-70 {
+    margin: 3rem 0rem;
+  }
   .banner_area h4 {
     font-size: 3rem;
   }
@@ -1224,6 +1248,19 @@ header .menu-area .dropdown .mega-menu::after {
   }
 }
 @media screen and (max-width: 767px) {
+  .thank-you-area {
+    padding: 4rem 0rem;
+  }
+  .thank-you-area .order-message ul li {
+    margin-right: 1rem;
+    padding-right: 1rem;
+  }
+  .common-banner {
+    padding: 4rem 0rem;
+  }
+  .common-banner h3 {
+    font-size: 2.5rem;
+  }
   #custom-header {
     position: fixed;
     top: -50px;

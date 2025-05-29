@@ -434,7 +434,7 @@ window.addEventListener("scroll", () => {
             const li = document.createElement('li');
             const a = document.createElement('a');
             a.className = 'dropdown-item';
-            a.href = '#';
+            a.href = 'products.html';
             a.textContent = item;
             li.appendChild(a);
             innerUl.appendChild(li);
@@ -474,7 +474,7 @@ window.addEventListener("scroll", () => {
             const li = document.createElement('li');
             const a = document.createElement('a');
             a.className = 'dropdown-item';
-            a.href = '#';
+            a.href = 'products.html';
             a.textContent = item;
             li.appendChild(a);
             menu.appendChild(li);
@@ -493,3 +493,96 @@ window.addEventListener("scroll", () => {
       console.error('Error loading categories:', error);
     });
 
+//Category showing in the prodcuct page
+  fetch('category-list.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to load category list');
+      }
+      return response.json();
+    })
+    .then(data => {
+      const categories = data.categories;
+      const list = document.getElementById('products-category');
+
+      categories.forEach(category => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = "products.html";
+
+        const img = document.createElement('img');
+        img.src = category.image;
+        img.alt = category.name;
+        img.style.width = '50px'; // optional styling
+        img.style.marginRight = '8px';
+
+        const span = document.createElement('span');
+        span.textContent = category.name;
+
+        a.appendChild(img);
+        a.appendChild(span);
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+    })
+    .catch(error => {
+      console.error('Error loading categories:', error);
+    });
+
+
+    //Product page al products are showing from category.json file
+    fetch('category.json')
+      .then(response => {
+        if (!response.ok) throw new Error("Failed to load products");
+        return response.json();
+      })
+      .then(data => {
+        const allProducts = [
+          ...data["new-arrival"],
+          ...data["popular"],
+          ...data["featured"],
+          ...data["best-seller"]
+        ];
+    
+        // Remove duplicate products by ID
+        const uniqueProducts = Array.from(
+          new Map(allProducts.map(item => [item.id, item])).values()
+        );
+    
+        const container = document.getElementById('custom-products');
+        const productCountText = document.querySelector('.products-right p');
+    
+        // Update product count
+        productCountText.textContent = `Showing all ${uniqueProducts.length} Products`;
+    
+        // Render each product
+        uniqueProducts.forEach(product => {
+          const col = document.createElement('div');
+          col.className = 'col-6 col-md-4 col-lg-3';
+    
+          col.innerHTML = `
+            <div class="product-box text-center position-relative">
+              <div class="product-pic"> 
+                <img src="${product.image}" alt="${product.name}" class="product-image">
+              </div>
+              <div class="product-content">
+                <div class="product-title text-truncate" data-id="${product.id}" data-name="${product.name}">
+                  ${product.name}
+                </div>
+                <div class="product-price" data-price="${product.price}">
+                  $${product.price.toFixed(2)}
+                </div>
+              </div>
+              <div class="cart-details position-absolute">
+                <ul>
+                  <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
+                  <li><a href="#" class="add-cart"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                </ul>
+              </div>
+            </div>`;
+    
+          container.appendChild(col);
+        });
+      })
+      .catch(error => console.error('Error loading products:', error));
+    
