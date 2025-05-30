@@ -76,6 +76,20 @@ header {
         padding: 1rem 0rem;
     }
     .middle-area {
+        #product-results {
+            position: absolute;
+            background-color: #fff;
+            left: 0;
+            right: 0;
+            z-index: 1;
+            // padding: 1rem 0rem;
+            gap: 1rem 0rem;
+        }
+        .product-card {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
         .logo-area-mid {
             .search-form {
                 ul {

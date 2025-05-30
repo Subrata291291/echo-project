@@ -89,6 +89,19 @@ header .topbar-area ul .divider {
   margin: 0rem 2rem;
   color: #454545;
 }
+header .middle-area #product-results {
+  position: absolute;
+  background-color: #fff;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  gap: 1rem 0rem;
+}
+header .middle-area .product-card {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
 header .middle-area .logo-area-mid {
   padding: 2rem 0rem;
 }

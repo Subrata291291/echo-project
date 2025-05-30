@@ -79,7 +79,7 @@ window.addEventListener("scroll", () => {
 });
 
   
-
+//Cart Function 
   document.addEventListener('DOMContentLoaded', () => {
     const template = document.querySelector('.product-template');
     if (template) {
@@ -586,3 +586,93 @@ window.addEventListener("scroll", () => {
       })
       .catch(error => console.error('Error loading products:', error));
     
+
+// Load categories into both desktop and mobile selects without duplicates
+fetch('category-list.json')
+.then(response => response.json())
+.then(data => {
+  const categorySelect = document.getElementById('category-select');
+  const categorySelectMb = document.getElementById('category-select-mb');
+
+  const uniqueCategories = new Set();
+  data.categories.forEach(cat => uniqueCategories.add(cat.name));
+
+  const categoryOptions = [...uniqueCategories].map(name => {
+    const option = document.createElement('option');
+    option.value = name;
+    option.textContent = name;
+    return option;
+  });
+
+  categorySelect.innerHTML = '<option value="">All Categories</option>';
+  categoryOptions.forEach(option => categorySelect.appendChild(option.cloneNode(true)));
+
+  categorySelectMb.innerHTML = '<option value="">All Categories</option>';
+  categoryOptions.forEach(option => categorySelectMb.appendChild(option.cloneNode(true)));
+});
+
+// Shared product filtering logic
+function filterProducts(searchTerm, selectedCategory) {
+fetch('product.json')
+  .then(response => response.json())
+  .then(data => {
+    const filtered = data.products.filter(product => {
+      const nameMatch = product.name.toLowerCase().includes(searchTerm);
+      const categoryMatch = !selectedCategory || product.category === selectedCategory;
+      return nameMatch && categoryMatch;
+    });
+    displayProducts(filtered);
+  });
+}
+
+// Handle desktop search form
+const desktopForm = document.getElementById('productSearchForm');
+if (desktopForm) {
+desktopForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const searchTerm = desktopForm.querySelector('input[name="search"]').value.toLowerCase();
+  const selectedCategory = desktopForm.querySelector('select[name="category"]').value;
+  filterProducts(searchTerm, selectedCategory);
+});
+}
+
+// Handle mobile search form
+const mobileForm = document.getElementById('productSearchFormMb');
+if (mobileForm) {
+  mobileForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const searchTermMb = mobileForm.querySelector('input[name="search_mb"]').value.toLowerCase();
+    const selectedCategoryMb = mobileForm.querySelector('select[name="category_mb"]').value;
+    filterProducts(searchTermMb, selectedCategoryMb);
+  });
+}
+
+
+
+// Display filtered products
+function displayProducts(products) {
+const container = document.getElementById('product-results');
+container.innerHTML = '';
+
+if (products.length === 0) {
+  container.innerHTML = '<p>No products found.</p>';
+  return;
+}
+
+products.forEach(product => {
+  const div = document.createElement('div');
+  div.className = 'col-12';
+  div.innerHTML = `
+      <div class="product-card p-3 border rounded text-center h-100">
+        <a href="products.html?id=${product.id}" class="text-decoration-none text-dark">
+        <img src="${product.image}" alt="${product.name}" class="img-fluid mb-2" style="max-height: 120px; object-fit: contain;">
+        </a>
+        <h5>
+        ${product.name}
+        <p class="mt-2"><strong>$${product.price.toFixed(2)}</strong></p>
+        </h5>
+      </div>
+  `;
+  container.appendChild(div);
+});
+}
