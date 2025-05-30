@@ -663,7 +663,7 @@ products.forEach(product => {
   const div = document.createElement('div');
   div.className = 'col-12';
   div.innerHTML = `
-      <div class="product-card p-3 border rounded text-center h-100">
+      <div class="product-card p-3 border rounded text-center h-100 shadow">
         <a href="products.html?id=${product.id}" class="text-decoration-none text-dark">
         <img src="${product.image}" alt="${product.name}" class="img-fluid mb-2" style="max-height: 120px; object-fit: contain;">
         </a>
