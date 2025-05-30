@@ -73,28 +73,25 @@
               </div>
             </div>
             <div class="col-8 col-md-6 d-none d-md-block">
-              <div class="logo-area-mid">
-                <form class="search-form" action="" method="get">
-                    <ul class="d-flex align-items-center justify-content-between">
-                        <li class="w-100">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        </li>
-                        <li class="categrory-area d-md-none d-lg-block">
-                            <select class="form-select" id="category-select" aria-label="Default select example">
-                                <option selected>All Categories</option>
-                                <!-- <option value="1">Vegetables</option>
-                                <option value="2">Fruits</option>
-                                <option value="3">Meat</option>
-                                <option value="4">Bread</option>
-                                <option value="5">Sea Food</option>
-                                <option value="6">Drinks</option> -->
-                              </select>
-                        </li>
-                        <li>
-                            <button class="btn btn-outline-success search-btn" type="submit">Search</button>
-                        </li>
-                    </ul>
+              <div class="logo-area-mid position-relative">
+                <form class="search-form" id="productSearchForm">
+                  <ul class="d-flex align-items-center justify-content-between list-unstyled">
+                    <li class="w-100 me-2">
+                      <input class="form-control" name="search" type="search" placeholder="Search" aria-label="Search">
+                    </li>
+                    <li class="categrory-area me-2 d-md-none d-lg-block">
+                      <select class="form-select" name="category" id="category-select" aria-label="Select Category">
+                        <option value="">All Categories</option>
+                        <!-- Categories will be loaded dynamically -->
+                      </select>
+                    </li>
+                    <li>
+                      <button class="btn btn-outline-success search-btn" type="submit">Search</button>
+                    </li>
+                  </ul>
                 </form>
+                <!-- Product Results -->
+                <div id="product-results" class="row mt-4"></div>
               </div>
             </div>
             <div class="col-8 col-md-3">
@@ -157,28 +154,24 @@
             </div>
             <div class="col-12 d-md-none">
                 <div class="logo-area-mid">
-                    <form class="search-form" action="" method="get">
-                        <ul class="d-flex align-items-center justify-content-between">
-                            <li class="w-100">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            </li>
-                            <li class="categrory-area d-md-none d-lg-block">
-                                <select class="form-select" id="category-select-mb" aria-label="Default select example">
-                                    <option selected>All Categories</option>
-                                    <!-- <option value="1">Vegetables</option>
-                                    <option value="2">Fruits</option>
-                                    <option value="3">Meat</option>
-                                    <option value="4">Bread</option>
-                                    <option value="5">Sea Food</option>
-                                    <option value="6">Drinks</option> -->
-                                  </select>
-                            </li>
-                            <li>
-                                <button class="btn btn-outline-success search-btn" type="submit">Search</button>
-                            </li>
-                        </ul>
-                    </form>
-                  </div>
+                  <form class="search-form" id="productSearchFormMb">
+                    <ul class="d-flex align-items-center justify-content-between list-unstyled">
+                      <li class="w-100 me-2">
+                        <input class="form-control" name="search_mb" type="search" placeholder="Search" aria-label="Search">
+                      </li>
+                      <li class="categrory-area me-2 d-md-none d-lg-block">
+                        <select class="form-select" name="category_mb" id="category-select-mb" aria-label="Select Category">
+                          <option value="">All Categories</option>
+                        </select>
+                      </li>
+                      <li>
+                        <button class="btn btn-outline-success search-btn" type="submit">Search</button>
+                      </li>
+                    </ul>
+                  </form>                                  
+                  <!-- Product Results -->
+                  <div id="product-results" class="row mt-4"></div>
+                </div>
             </div>
           </div>
         </div>
