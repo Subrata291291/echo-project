@@ -91,7 +91,6 @@ header .topbar-area ul .divider {
 }
 header .middle-area #product-results {
   position: absolute;
-  background-color: #fff;
   left: 0;
   right: 0;
   z-index: 1;
@@ -101,6 +100,7 @@ header .middle-area .product-card {
   display: flex;
   align-items: center;
   gap: 2rem;
+  background-color: #fff;
 }
 header .middle-area .logo-area-mid {
   padding: 2rem 0rem;
