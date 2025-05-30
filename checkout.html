@@ -282,18 +282,18 @@
     </section>
     <!--Common Banner-->
 
-    <!--Cart Area-->
+    <!--Checkout Area-->
     <section class="checkout-area">
         <div class="container">
             <div class="row gx-5">
                 <div class="col-lg-8 order-2 order-md-2 order-lg-1">
                     <div class="checkout-left">
-                        <form class="checkout-form needs-validation" novalidate>
+                        <form class="checkout-form needs-validation" novalidate action="https://script.google.com/macros/s/AKfycbzq9KN7yxl1ynZN_Sq44TZoqF3IFz9WoGHdqEe9PlAdCmXsnZxgnbUujRUkd1D3sYfZoA/exec">
                             <div class="contact-information">
                                 <h3>Contact information</h3>
                                 <p class="mb-4 mt-2">We'll use this email to send you details and updates about your order.</p>
                                 <div class="input-group has-validation">
-                                  <input type="email" class="form-control" id="validationCustomEmail" aria-describedby="inputGroupPrepend" required placeholder="Email Address">
+                                  <input type="email" name="email" class="form-control" id="validationCustomEmail" aria-describedby="inputGroupPrepend" required placeholder="Email Address">
                                   <div class="invalid-feedback">
                                     Please choose an email ID.
                                   </div>
@@ -303,52 +303,52 @@
                               <h3>Billing address</h3>
                               <p class="mb-4 mt-2">We'll use this email to send you details and updates about your order.</p>
                               <div class="col-md-6 mb-4">
-                                <input type="text" class="form-control" id="validationFirstname" placeholder="John" required>
+                                <input type="text" name="firstname" class="form-control" id="validationFirstname" placeholder="John" required>
                                 <div class="invalid-feedback">
                                   Please enter first name.
                                 </div>
                               </div>
                               <div class="col-md-6 mb-4">
-                                <input type="text" class="form-control" id="validationLastname" placeholder="Doe" required>
+                                <input type="text" name="lastname" class="form-control" id="validationLastname" placeholder="Doe" required>
                                 <div class="invalid-feedback">
                                   Please enter last name.
                                 </div>
                               </div>
                               <div class="col-md-12 mb-4">
-                                <input type="text" class="form-control" id="validationAddress" placeholder="Address" required>
+                                <input type="text" name="address" class="form-control" id="validationAddress" placeholder="Address" required>
                                 <div class="invalid-feedback">
                                   Please enter an address.
                                 </div>
                               </div>
                               <div class="col-md-12 mb-4">
-                                <input type="text" class="form-control" id="validationApartment" placeholder="Apartment,suite,etc. (optional)">
+                                <input type="text" name="apartment" class="form-control" id="validationApartment" placeholder="Apartment,suite,etc. (optional)">
                                 <div class="invalid-feedback">
                                   Please enter an apartment name.
                                 </div>
                               </div>
                               <div class="col-md-6 mb-4">
-                                <input type="text" class="form-control" id="validationCity" placeholder="City" required>
+                                <input type="text" name="city" class="form-control" id="validationCity" placeholder="City" required>
                                 <div class="invalid-feedback">
                                   Please enter a city name.
                                 </div>
                               </div>
                               <div class="col-md-6 mb-4">
-                                <select class="form-select" id="validationState" required>
+                                <select class="form-select" name="state" id="validationState" required>
                                   <option selected disabled value="">State</option>
-                                  <option>West Bengal</option>
+                                  <option value="West Bengal">West Bengal</option>
                                 </select>
                                 <div class="invalid-feedback">
                                   Please select a valid state.
                                 </div>
                               </div>
                               <div class="col-md-6 mb-4">
-                                <input type="tel" placeholder="Pin Code" class="form-control" id="validationPin" required>
+                                <input type="tel" name="pin" placeholder="Pin Code" class="form-control" id="validationPin" required>
                                 <div class="invalid-feedback">
                                   Please enter a pin code.
                                 </div>
                               </div>
                               <div class="col-md-6 mb-4">
-                                <input type="tel" placeholder="Phone" class="form-control" id="validationPhone" required>
+                                <input type="tel" name="phone" placeholder="Phone" class="form-control" id="validationPhone" required>
                                 <div class="invalid-feedback">
                                   Please enter a phone number.
                                 </div>
@@ -358,7 +358,7 @@
                               <h3>Payment Method</h3>
                               <p class="mb-4 mt-2">We'll use this email to send you details and updates about your order.</p>
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked name="payment">
                                 <label class="form-check-label" for="flexRadioDefault2">
                                   Cash on delivery
                                 </label>
@@ -366,7 +366,7 @@
                               </div>
                           </div>
                           <div class="col-12">
-                            <button class="submit-btn w-100" type="submit">Submit form</button>
+                            <button class="submit-btn w-100" type="submit" value="submit">Pay Now</button>
                           </div>
                         </form>
                     </div>
@@ -429,7 +429,7 @@
             </div>
         </div>
     </section>
-    <!--Cart Area-->
+    <!--Checkout Area-->
 
     <!--Footer area-->
     <section class="newsletter-area">
