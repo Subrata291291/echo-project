@@ -689,3 +689,9 @@ form.addEventListener('submit', e => {
     .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
     .catch(error => console.error('Error!', error.message))
 })
+
+  document.querySelector('.checkout-form').addEventListener('submit', function () {
+    setTimeout(() => {
+      alert('Form submitted successfully!');
+    }, 1500); // Wait for Google Apps Script to process
+  });
