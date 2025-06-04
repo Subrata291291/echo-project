@@ -678,20 +678,3 @@ products.forEach(product => {
 }
 
 
-//Form submitted to the google sheet
-
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzq9KN7yxl1ynZN_Sq44TZoqF3IFz9WoGHdqEe9PlAdCmXsnZxgnbUujRUkd1D3sYfZoA/exec'
-const form = document.forms['google-sheet']
-
-form.addEventListener('submit', e => {
-  e.preventDefault()
-  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-    .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
-    .catch(error => console.error('Error!', error.message))
-})
-
-  document.querySelector('.checkout-form').addEventListener('submit', function () {
-    setTimeout(() => {
-      alert('Form submitted successfully!');
-    }, 1500); // Wait for Google Apps Script to process
-  });
